@@ -1,2 +1,2 @@
 
-![Image text](https://github.com/tracyzhu2014/geek-arch/raw/master/week4/picture.png)
+![互联网系统的技术挑战](./picture.png)
