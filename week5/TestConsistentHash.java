@@ -17,7 +17,7 @@ public class TestConsistentHash{
     public TestConsistentHash()
     {
         m_result = new HashMap<String,Integer>();
-        LinkedList<String> nodes = new LinkedList<String>();
+        m_nodes = new LinkedList<String>();
         m_nodes.add("192.168.2.1:8080");
         m_nodes.add("192.168.2.2:8080");
         m_nodes.add("192.168.2.3:8080");
@@ -35,7 +35,12 @@ public class TestConsistentHash{
      */
     public double standardDiviation(int allNum) {
         int size = m_result.size();
-        double dAve=allNum/size;//求平均值
+        int iTotalcount = 0;
+        for (Integer iTemp : m_result.values()){
+            iTotalcount += iTemp.intValue();
+        }
+        m_allcount = iTotalcount;
+        double dAve=iTotalcount/size;//求平均值
         double dVar=0;
         for (Integer iTemp : m_result.values()){
             double dTemp = iTemp.doubleValue() - dAve;
@@ -69,7 +74,7 @@ public class TestConsistentHash{
         m_result.forEach((k,v)->{
             System.out.println("结点["+k+"]上有"+v);
         });
-        System.out.println("数据分布标准差为:" + standardDiviation(allCount));
+        System.out.format("虚拟节点[%d ]个时,总数据量[%d],数据分布标准差为[%.2f]\n" ,m_virtualCount ,m_allcount, standardDiviation(allCount));
     }
 
 
@@ -85,6 +90,9 @@ public class TestConsistentHash{
 
         //100万数据量时，设定1000个虚拟节点的数据分布情况
         oTest.processTest(1000000, 1000);
+
+        //100万数据量时，设定1000个虚拟节点的数据分布情况
+        oTest.processTest(1000000, 10000);
     }
 
 }

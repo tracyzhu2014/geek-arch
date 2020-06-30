@@ -111,7 +111,7 @@ public class ConsistentHashLoadBalance {
 
     public void printVirtualNode()
     {
-        System.out.println("----hostcount:" + nodes.size() + ",virtualcount:"+ virtualNodes.size() + "----");
+        System.out.println("------hostcount:" + nodes.size() + ",virtualcount:"+ virtualNodes.size() + "------");
     }
     private void printTreeNode(){
         if (virtualNodes != null && ! virtualNodes.isEmpty()){
