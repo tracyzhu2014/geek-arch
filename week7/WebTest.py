@@ -19,6 +19,9 @@ def testWeb(value1, value2=None):
 def sendHttpGet(url):
     req = urllib.request.Request(url, method= 'GET')
     response = urllib.request.urlopen(req)
+    #the_page = response.read().decode()
+    #the_page = None
+    #print(the_page)
 
 def compute_percent():
     import numpy as np
@@ -34,11 +37,11 @@ def compute_percent():
 
 '''
 测试运行结果为：
-avgtime=0.355, 95 percent is less than 0.511
+avgtime=0.409,    95 percent is less than 1.081
 '''
 if __name__ == "__main__":
     from concurrent.futures import ThreadPoolExecutor
-    URL = "https://www.baidu.com" #压测web地址
+    URL = "http://www.baidu.com" #压测web地址
     THREAD_NUM = 10  #并发数
     REQ_COUNT = 1000  # 请求数
     threadPool = ThreadPoolExecutor(max_workers=THREAD_NUM, thread_name_prefix="test_baidu")
