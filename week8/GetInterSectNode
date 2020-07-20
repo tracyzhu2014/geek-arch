@@ -1,0 +1,31 @@
+'''
+链表节点定义
+'''
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+'''
+假设链表A 中 ，非相交部分为A1， 相交部分为C； 
+链表B中，非相交部分为B1，相交部分为C
+使用两个指针(pA和pB)分别遍历链表A+B和链表B+A, 总长度相等。 
+即 (A1+C) +（B1 +C ）= (B1+C )+（A1+C）    (A1+C) +B1 = (B1+C) + A1
+遍历一定会同时结束于相交点。当pA=pB指针相等时，即为交叉点。如果此时指针为null，则表示2个链表无交叉元素。
+'''
+def getIntersectionNode(self, headA, headB):
+        """
+        :headA A链表的头指针
+        :headB B链表的头指针
+        :rtype: ListNode
+        """
+        pA = headA
+        pB = headB
+        while pA != pB  :
+            pA = pA.next
+            pB = pB.next
+            if pA is None :
+                pA = headB
+            if pB is None :
+                pB = headA
+        return pA
